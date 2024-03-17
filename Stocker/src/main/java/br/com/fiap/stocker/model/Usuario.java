@@ -1,5 +1,6 @@
 package br.com.fiap.stocker.model;
 
+<<<<<<< HEAD
 import java.util.Collection;
 import java.util.List;
 
@@ -9,6 +10,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+=======
+>>>>>>> 477b2826d31c0d3d10f1d28c15240a7875e16294
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +22,11 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+<<<<<<< HEAD
 import jakarta.validation.constraints.Size;
+=======
+import jakarta.validation.constraints.Past;
+>>>>>>> 477b2826d31c0d3d10f1d28c15240a7875e16294
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,7 +38,11 @@ import lombok.NoArgsConstructor;
 @Table(name = "TB_USUARIO", uniqueConstraints = {
     @UniqueConstraint(name = "UK_NM_USUARIO", columnNames = {"NM_USUARIO"})
 })
+<<<<<<< HEAD
 public class Usuario implements UserDetails{
+=======
+public class Usuario {
+>>>>>>> 477b2826d31c0d3d10f1d28c15240a7875e16294
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ID_USUARIO")
@@ -43,17 +54,26 @@ public class Usuario implements UserDetails{
     @Column(name = "NM_USUARIO", nullable = false)
     private String nome;
 
+<<<<<<< HEAD
     @Size(min = 8)
     @Column(name = "SENHA_USUARIO")
     private String senha;
 
     @Email @NotBlank
+=======
+    @Past
+    @Column(name = "SENHA_USUARIO")
+    private String senha;
+
+    @Email
+>>>>>>> 477b2826d31c0d3d10f1d28c15240a7875e16294
     @Column(name = "EMAIL_USUARIO")
     private String email;
 
     @Column(name = "PERM_USUARIO")
     private String permissao;
 
+<<<<<<< HEAD
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("Role_user"));    }
@@ -87,4 +107,6 @@ public class Usuario implements UserDetails{
         return new UsernamePasswordAuthenticationToken(email, null, getAuthorities());
     }
 
+=======
+>>>>>>> 477b2826d31c0d3d10f1d28c15240a7875e16294
 }

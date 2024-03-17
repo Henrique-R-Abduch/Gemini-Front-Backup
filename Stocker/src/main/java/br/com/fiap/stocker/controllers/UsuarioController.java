@@ -9,8 +9,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+<<<<<<< HEAD
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
+=======
+>>>>>>> 477b2826d31c0d3d10f1d28c15240a7875e16294
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.fiap.stocker.model.Usuario;
+<<<<<<< HEAD
 import br.com.fiap.stocker.model.dto.Credenciais;
 import br.com.fiap.stocker.model.dto.Token;
 import br.com.fiap.stocker.model.dto.UsuarioResponse;
@@ -30,6 +34,12 @@ import lombok.extern.log4j.Log4j2;
 
 @RestController
 @Log4j2
+=======
+import br.com.fiap.stocker.repository.UsuarioRepository;
+
+
+@RestController
+>>>>>>> 477b2826d31c0d3d10f1d28c15240a7875e16294
 public class UsuarioController {
     
     Logger log = LoggerFactory.getLogger(getClass());
@@ -37,12 +47,15 @@ public class UsuarioController {
 
     @Autowired
     UsuarioRepository repository;
+<<<<<<< HEAD
     @Autowired
     TokenService service;
     @Autowired
     AuthenticationManager authManager;
     @Autowired
     PasswordEncoder encoder;
+=======
+>>>>>>> 477b2826d31c0d3d10f1d28c15240a7875e16294
 
     @GetMapping("/usuario")
     public List<Usuario> ListAll() {
@@ -55,6 +68,7 @@ public class UsuarioController {
         return ResponseEntity.ok(getUsuarioById(id));
 
     }
+<<<<<<< HEAD
   
 
     @PostMapping("/usuario")
@@ -65,6 +79,14 @@ public class UsuarioController {
         return ResponseEntity
             .status(HttpStatus.CREATED)
             .body(UsuarioResponse.fromUsuario(usuario));
+=======
+
+    @PostMapping("/usuario")
+    public ResponseEntity<Usuario> Insert(@RequestBody Usuario usuario) {
+        log.info("cadastrando usuario - " + usuario);
+        repository.save(usuario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+>>>>>>> 477b2826d31c0d3d10f1d28c15240a7875e16294
     }
 
     @PutMapping("/categorias/{id}")
@@ -90,6 +112,7 @@ public class UsuarioController {
          return new RuntimeException();
      });
     }
+<<<<<<< HEAD
 
 
     @PostMapping("/login")
@@ -98,4 +121,6 @@ public class UsuarioController {
         return ResponseEntity.ok(service.generateToken("henriqueabduch@gmail.com"));
     }
 
+=======
+>>>>>>> 477b2826d31c0d3d10f1d28c15240a7875e16294
 }
